@@ -1,0 +1,10 @@
+# Rule: Port Scan Detection
+# Detects: Single source IP hitting 20+ ports in 1 minute
+# MITRE: T1046 — Network Service Discovery
+
+index=main EventCode=3
+| bucket _time span=1m
+| stats dc(DestinationPort) as unique_ports by _time, SourceIp
+| where unique_ports > 20
+| eval alert="PORT SCAN DETECTED"
+| eval MITRE="T1046"
