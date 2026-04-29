@@ -1,0 +1,9 @@
+# Rule: Encoded PowerShell Detection
+# Detects: Base64 encoded commands via -EncodedCommand flag
+# MITRE: T1059.001 — PowerShell, T1027 — Obfuscation
+
+index=main EventCode=4688
+CommandLine="*EncodedCommand*" OR CommandLine="*-enc *"
+| table _time, User, CommandLine, Computer
+| eval alert="SUSPICIOUS ENCODED POWERSHELL DETECTED"
+| eval MITRE="T1059.001 / T1027"
