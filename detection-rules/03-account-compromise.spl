@@ -1,0 +1,10 @@
+# Rule: Account Compromise After Brute Force
+# Detects: Failures followed by success from same IP
+# MITRE: T1110 — Brute Force
+
+index=main (EventCode=4625 OR EventCode=4624)
+| stats count(eval(EventCode=4625)) as failures,
+  count(eval(EventCode=4624)) as successes by src_ip, Account_Name
+| where failures > 5 AND successes >= 1
+| eval alert="POSSIBLE ACCOUNT COMPROMISE AFTER BRUTE FORCE"
+| eval MITRE="T1110"
