@@ -1,0 +1,10 @@
+# Rule: Suspicious File Write to Temp by PowerShell
+# Detects: PowerShell writing files to C:\Windows\Temp
+# MITRE: T1074 — Data Staged
+
+index=main EventCode=11
+TargetFilename="*\\Temp\\*"
+Image="*powershell*"
+| table _time, Image, TargetFilename, User
+| eval alert="SUSPICIOUS FILE WRITE TO TEMP BY POWERSHELL"
+| eval MITRE="T1074"
