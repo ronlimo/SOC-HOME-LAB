@@ -1,0 +1,10 @@
+# Rule: Brute Force Detection
+# Detects: 5+ failed logins from same IP in 5 minutes
+# MITRE: T1110 — Brute Force
+
+index=main EventCode=4625
+| bucket _time span=5m
+| stats count by _time, IpAddress, Account_Name
+| where count > 5
+| eval alert="BRUTE FORCE DETECTED"
+| eval MITRE="T1110"
