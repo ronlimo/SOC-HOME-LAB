@@ -1,0 +1,10 @@
+# Rule: Post-Exploitation Recon Commands
+# Detects: Recon tools spawned from PowerShell parent
+# MITRE: T1087 — Account Discovery, T1082 — System Info Discovery
+
+index=main EventCode=4688
+New_Process_Name="*whoami.exe*" OR New_Process_Name="*systeminfo.exe*"
+OR New_Process_Name="*net.exe*" OR New_Process_Name="*nltest.exe*"
+| table _time, host, New_Process_Name, Creator_Process_Name
+| eval alert="POST-EXPLOITATION RECON DETECTED"
+| eval MITRE="T1087 / T1082"
