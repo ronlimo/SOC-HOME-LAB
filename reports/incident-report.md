@@ -1,9 +1,6 @@
-Here is the complete reports/incident-report.md file. Copy everything below and paste it into VS Code:
-markdown# Incident Report — SOC Home Lab
-
 **Report Reference:** INC-2026-001  
 **Date:** April 28, 2026  
-**Analyst:** Ron  
+**Analyst:** Ron Limo  
 **Classification:** CONFIDENTIAL — Lab Exercise  
 **Severity:** HIGH  
 **Status:** Resolved (Controlled Lab Environment)  
@@ -113,6 +110,7 @@ access required for the next stage.
 | 3 | Initial Access | Evil-WinRM established remote shell using brute-forced credentials | Interactive shell obtained as windows\targetuser | T1021.006 |
 | 4 | Execution & Discovery | PowerShell recon commands: whoami, net user, systeminfo, encoded commands | Full system fingerprint. Admin accounts enumerated. | T1059.001, T1087 |
 | 5 | Collection / Staging | Files written to C:\Windows\Temp via Invoke-WebRequest | Attacker-controlled files staged on target | T1074, T1105 |
+#
 MITRE Kill Chain:
 T1595 → T1046 → T1110 → T1021.006 → T1059.001 → T1087 → T1105
 
@@ -207,12 +205,17 @@ is statistically inconsistent with normal user behaviour and
 characteristic of automated scanning.
 
 ### 4.6 Screenshots
+Nmap Ping Sweep and Basic Scan
+<img width="602" height="434" alt="service version scan" src="https://github.com/user-attachments/assets/5e749319-7db0-4587-b1de-12295bcd9a8b" />
 
-![Nmap Ping Sweep and Basic Scan](../screenshots/attack-3-nmap/13-nmap-ping-sweep.png)
-![Nmap Service Version and Aggressive Scan](../screenshots/attack-3-nmap/14-nmap-service-version-scan.png)
-![Nmap Aggressive Scan Full Output](../screenshots/attack-3-nmap/15-nmap-aggressive-scan.png)
-![Nmap SYN and Port Range Scan](../screenshots/attack-3-nmap/16-nmap-stealth-syn-scan.png)
-![Splunk Network Events from Kali](../screenshots/attack-3-nmap/17-splunk-eventid3-network-connections.png)
+Nmap Service Version and Aggressive Scan
+<img width="602" height="434" alt="service version scan" src="https://github.com/user-attachments/assets/4ffc34f0-cb98-4b79-84ff-1c1ab3fc694f" />
+<img width="959" height="460" alt="aggressive scan" src="https://github.com/user-attachments/assets/96f78e5f-538e-409b-a56a-ee9340867807" />
+
+Splunk Network Events from Kali
+<img width="959" height="395" alt="unpacking the data" src="https://github.com/user-attachments/assets/99a5ee8c-a093-4ed9-8a3d-54e17bbbc355" />
+<img width="959" height="401" alt="Extracting" src="https://github.com/user-attachments/assets/5f40b664-ecfb-48a3-b802-af217fc1156f" />
+
 
 ### 4.7 Response Actions
 
@@ -327,9 +330,15 @@ to account compromise.
 
 ### 5.6 Screenshots
 
-![Hydra Running and Evil-WinRM Shell](../screenshots/attack-1-brute-force/01-hydra-evil-winrm.png)
-![Splunk 1093 Events](../screenshots/attack-1-brute-force/02-splunk-1093-events.png)
-![Splunk EventCode Distribution](../screenshots/attack-1-brute-force/03-splunk-eventcode-distribution.png)
+Hydra Running and Evil-WinRM Shell
+<img width="959" height="458" alt="Bruteforce Login" src="https://github.com/user-attachments/assets/96ae769d-f855-4d72-898d-821a5dd314d1" />
+
+[Splunk 1093 Events
+<img width="959" height="459" alt="splunk brutefore pattern" src="https://github.com/user-attachments/assets/f874bdb6-fcba-46c1-b950-8975e1e69434" />
+
+Splunk EventCode Distribution
+<img width="417" height="225" alt="splunk 2" src="https://github.com/user-attachments/assets/3916cf12-1a54-4cbb-a5b2-851e1e486946" />
+
 
 ### 5.7 Response Actions
 
@@ -473,12 +482,23 @@ Image="*powershell*"
 
 ### 6.6 Screenshots
 
-![Recon Commands Output](../screenshots/attack-2-powershell/06-powershell-recon-commands.png)
-![Systeminfo Output](../screenshots/attack-2-powershell/07-systeminfo-output.png)
-![Encoded PowerShell Command](../screenshots/attack-2-powershell/08-encoded-powershell.png)
-![Invoke-WebRequest and File Staging](../screenshots/attack-2-powershell/09-invoke-webrequest-staging.png)
-![Splunk Process Tree EventCode 4688](../screenshots/attack-2-powershell/10-splunk-process-tree.png)
-![Splunk Recon Commands Detected](../screenshots/attack-2-powershell/11-splunk-recon-detected.png)
+Recon Commands Output
+<img width="659" height="446" alt="powershell recon commands 1" src="https://github.com/user-attachments/assets/53c69945-15fb-44f7-9f0d-51c502d53083" />
+Systeminfo Output
+<img width="359" height="218" alt="powershell encoded command" src="https://github.com/user-attachments/assets/c1cd3e26-fe50-486e-a70c-c7aa4fb89b7f" />
+
+Encoded PowerShell Command
+<img width="359" height="218" alt="powershell encoded command" src="https://github.com/user-attachments/assets/6dff3005-9d2f-441e-b56f-e735f89d7a64" />
+
+Splunk Process Tree EventCode 4688
+<img width="959" height="401" alt="All Recon Activity" src="https://github.com/user-attachments/assets/9aca75da-6289-4a5f-b74a-7c6812f99c57" />
+
+Splunk Recon Commands Detected
+<img width="957" height="403" alt="Suspicious shell execution" src="https://github.com/user-attachments/assets/043788d3-3411-4f1a-a1ff-d22e69e46f1b" />
+<img width="959" height="403" alt="Identification of remote attacker vector" src="https://github.com/user-attachments/assets/26f7c9f4-73bd-4e38-96fb-579d570d901c" />
+<img width="956" height="398" alt="Discovery tool execution" src="https://github.com/user-attachments/assets/a5af9022-e1fe-4a7b-aafd-8c579396ac9f" />
+<img width="959" height="400" alt="Detection of post exploitation reconnaissance" src="https://github.com/user-attachments/assets/eb70da6b-2172-4ab1-86cf-573af74b9c74" />
+
 
 ### 6.7 Response Actions
 
@@ -631,10 +651,10 @@ transferable to a professional Security Operations Centre role.
 
 ---
 
-**Report Prepared By:** Ron  
+**Report Prepared By:** Ron Limo 
+**SOC ANALYST | THREAT DETECTION
 **Institution:** KCA University, Nairobi, Kenya  
 **Programme:** BSc Information Technology  
 **Project:** Blue Team / SOC Home Lab — April 2026  
 **Tools:** Splunk Enterprise 10.2.2 | Sysmon | Nmap 7.95 | Hydra 9.5 | Evil-WinRM 3.7 | VirtualBox
 
-That is the complete file. Paste it into VS Code, save with 
