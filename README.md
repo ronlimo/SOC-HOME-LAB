@@ -107,6 +107,7 @@ MITRE Chain: T1595 → T1046 → T1110 → T1021.006 → T1059.001 → T1087 →
 
 ## Author
 
-**Ron**
+**Ron Kiptoo Limo
+SOC ANALYST | BLUE TEAMING & THREAT DETECTION**
 BSc Information Technology — KCA University, Nairobi, Kenya
-Blue Team / SOC Focus | TryHackMe | Splunk
+
