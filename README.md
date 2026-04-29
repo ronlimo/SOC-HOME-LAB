@@ -28,7 +28,6 @@ mapped to the MITRE ATT&CK framework.
 | Network | VirtualBox Host-Only Adapter — Isolated |
 | Hypervisor | Oracle VirtualBox |
 
-![Lab Diagram](architecture/lab-diagram.png)
 
 ---
 
